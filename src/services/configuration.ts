@@ -38,6 +38,10 @@ const CONFIGURATION: AuthorizerConfig = {
       roleName: "DVLATrailers",
       associatedResources: ["/*/trailers", "/*/trailers/*"],
     },
+    {
+      roleName: "TechRecord.View",
+      associatedResources: ["/vehicles/*"],
+    },
   ],
 };
 
@@ -58,6 +62,10 @@ export const getAssociatedResources = (role: Role, config: AuthorizerConfig): st
   for (const resourceMapping of config.roleToResources) {
     if (resourceMapping.roleName === role.name) {
       return resourceMapping.associatedResources;
+    }
+    if (resourceMapping.roleName.includes(".")) {
+      const [object, action] = resourceMapping.roleName.split(".");
+      if (role.name === object && role.access === action.toLowerCase()) return resourceMapping.associatedResources;
     }
   }
 

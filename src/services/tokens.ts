@@ -2,7 +2,7 @@ import * as JWT from "jsonwebtoken";
 import { JWT_MESSAGE } from "../models/enums";
 import { ILogEvent } from "../models/ILogEvent";
 
-export const getValidJwt = (authorizationToken: string, logEvent:ILogEvent): any => {
+export const getValidJwt = (authorizationToken: string, logEvent: ILogEvent): any => {
   checkFormat(authorizationToken);
 
   authorizationToken = authorizationToken.substring(7); // remove 'Bearer '

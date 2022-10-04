@@ -103,7 +103,7 @@ const newPolicyDocument = (statements: Statement[]): PolicyDocument => {
   };
 };
 
-const reportNoValidRoles = (jwt: any, event: APIGatewayTokenAuthorizerEvent, context: Context, logEvent:ILogEvent): void => {
+const reportNoValidRoles = (jwt: any, event: APIGatewayTokenAuthorizerEvent, context: Context, logEvent: ILogEvent): void => {
   const roles = jwt.payload.roles;
   if (roles && roles.length === 0) {
     logEvent.message = JWT_MESSAGE.NO_ROLES;
@@ -116,9 +116,9 @@ const reportNoValidRoles = (jwt: any, event: APIGatewayTokenAuthorizerEvent, con
  * This method is being used in order to clear the ILogEvent, ILogError objects and populate the request url and the time of request
  * @param event
  */
-const initialiseLogEvent = (event: APIGatewayTokenAuthorizerEvent):ILogEvent => {
-return {
+const initialiseLogEvent = (event: APIGatewayTokenAuthorizerEvent): ILogEvent => {
+  return {
     requestUrl: event.methodArn,
-    timeOfRequest: new Date().toISOString()
+    timeOfRequest: new Date().toISOString(),
   };
 };

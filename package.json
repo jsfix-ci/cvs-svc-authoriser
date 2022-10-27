@@ -4,7 +4,7 @@
   "description": "Lambda authoriser for validating a user's Azure AD JWT and generating an access policy.",
   "main": "handler.js",
   "engines": {
-    "node": "14.*"
+    "node": "16.*"
   },
   "scripts": {
     "build": "node_modules/typescript/bin/tsc --rootDir ./ --outDir build --sourceMap false && npm run build:copy && npm run build:install",
@@ -28,7 +28,7 @@
   "dependencies": {
     "aws-sdk": "2.1065.0",
     "aws-xray-sdk": "3.1.0",
-    "axios": "0.22.0",
+    "axios": "0.27.0",
     "js-yaml": "3.14.0",
     "jsonwebtoken": "8.5.1",
     "nock": "13.0.8",
@@ -42,7 +42,7 @@
     "@types/jest": "26.0.13",
     "@types/jest-plugin-context": "2.9.3",
     "@types/js-yaml": "3.12.5",
-    "@types/jsonwebtoken": "8.5.0",
+    "@types/jsonwebtoken": "8.5.9",
     "@types/node": "14.6.3",
     "@types/request-promise": "4.1.46",
     "audit-filter": "0.5.0",

@@ -22,6 +22,12 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
       path: "vehicles/*",
     },
   ],
+  "TechRecord.Archive": [
+    {
+      verbs: ["PUT", "OPTIONS"],
+      path: "/vehicles/archive/*",
+    },
+  ],
   "TestResult.CreateContingency": [
     {
       verbs: ["POST", "OPTIONS"],

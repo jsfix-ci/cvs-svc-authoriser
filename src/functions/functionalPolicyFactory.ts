@@ -1,9 +1,10 @@
-import { APIGatewayAuthorizerResult, Statement } from "aws-lambda";
+import { APIGatewayAuthorizerResult, MaybeStatementResource, Statement, StatementResource } from "aws-lambda";
 import newPolicyDocument from "./newPolicyDocument";
 import { ILogEvent } from "../models/ILogEvent";
 import StatementBuilder from "../services/StatementBuilder";
 import { functionConfig, IApiAccess } from "./functionalConfig";
 import { Jwt, JwtPayload } from "jsonwebtoken";
+import { ResourceStatement } from "aws-sdk/clients/ec2";
 
 function toStatements(access: IApiAccess): Statement[] {
   return access.verbs.map((v) => new StatementBuilder().setEffect("Allow").setHttpVerb(v).setResource(access.path).build());
@@ -16,13 +17,17 @@ export function generatePolicy(jwt: Jwt, logEvent: ILogEvent): APIGatewayAuthori
     .map((i: IApiAccess[]) => i.map((ia) => toStatements(ia)).flat())
     .flat();
 
-  if (statements.length === 0) {
+  const dedupedFilters = statements.filter((item: MaybeStatementResource, pos: number, self: MaybeStatementResource[]) => {
+    return self.findIndex((s) => s.Resource === item.Resource) === pos;
+  });
+
+  if (dedupedFilters.length === 0) {
     return undefined;
   }
 
   const returnValue = {
     principalId: jwt.payload.sub as string,
-    policyDocument: newPolicyDocument(statements),
+    policyDocument: newPolicyDocument(dedupedFilters),
   };
 
   return returnValue;

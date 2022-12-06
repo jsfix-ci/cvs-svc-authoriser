@@ -31,7 +31,7 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
   "TestResult.CreateDeskBased": [
     {
       verbs: ["POST", "OPTIONS"],
-      path: "test-result/*",
+      path: "test-results/*",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -43,13 +43,21 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
     },
     {
       verbs: ["GET", "OPTIONS"],
+      path: "test-types",
+    },
+    {
+      verbs: ["GET", "OPTIONS"],
       path: "test-types/*",
     },
   ],
   "TestResult.CreateContingency": [
     {
       verbs: ["POST", "OPTIONS"],
-      path: "test-result/*",
+      path: "test-results/*",
+    },
+    {
+      verbs: ["GET", "OPTIONS"],
+      path: "test-types",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -71,7 +79,11 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
   "TestResult.Amend": [
     {
       verbs: ["PUT", "OPTIONS"],
-      path: "test-result/*",
+      path: "test-results/*",
+    },
+    {
+      verbs: ["GET", "OPTIONS"],
+      path: "test-types",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -93,7 +105,11 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
   "TestResult.View": [
     {
       verbs: ["GET", "OPTIONS"],
-      path: "test-result/*",
+      path: "test-results/*",
+    },
+    {
+      verbs: ["GET", "OPTIONS"],
+      path: "test-types",
     },
     {
       verbs: ["GET", "OPTIONS"],

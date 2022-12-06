@@ -25,13 +25,13 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
   "TechRecord.Archive": [
     {
       verbs: ["PUT", "OPTIONS"],
-      path: "/vehicles/archive/*",
+      path: "vehicles/archive/*",
     },
   ],
   "TestResult.CreateDeskBased": [
     {
       verbs: ["POST", "OPTIONS"],
-      path: "test-results/*",
+      path: "test-results",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -40,6 +40,10 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
     {
       verbs: ["GET", "OPTIONS"],
       path: "reference/*",
+    },
+    {
+      verbs: ["GET", "OPTIONS"],
+      path: "defects",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -53,7 +57,7 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
   "TestResult.CreateContingency": [
     {
       verbs: ["POST", "OPTIONS"],
-      path: "test-results/*",
+      path: "test-results",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -69,7 +73,7 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
     },
     {
       verbs: ["GET", "OPTIONS"],
-      path: "defects/*",
+      path: "defects",
     },
     {
       verbs: ["GET", "OPTIONS"],
@@ -95,7 +99,7 @@ export const functionConfig: { [key: string]: NonEmptyArray<IApiAccess> } = {
     },
     {
       verbs: ["GET", "OPTIONS"],
-      path: "defects/*",
+      path: "defects",
     },
     {
       verbs: ["GET", "OPTIONS"],
